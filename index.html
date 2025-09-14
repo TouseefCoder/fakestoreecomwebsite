@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Add To cart functionality</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+      integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Poppins:100,100italic,200,200italic,300,300italic,regular,italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic"
+      rel="stylesheet"
+    />
+  </head>
+  <style>
+    body {
+      background-color: #fff;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
+    }
+    .productImage {
+      height: 200px;
+      width: 200px;
+    }
+    .buttonsClass {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .addToCart,
+    .closeDetails,
+    .showDetails {
+      background-color: #f0c14b;
+      border: 1px solid;
+      margin-top: 10px;
+      color: #111;
+      padding: 5px 10px;
+      cursor: pointer;
+    }
+    .showDetails {
+      background-color: #111;
+      color: #fff;
+    }
+    .closeDetails {
+      background-color: #ff2c8f;
+    }
+    .addToCartItems {
+      background-color: antiquewhite;
+    }
+
+    .navbar-container {
+      position: sticky;
+      top: 0;
+      z-index: 1;
+    }
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 75%;
+      padding: 10px;
+      padding-right: 30px;
+      position: relative;
+      background-color: #f0c14b;
+    }
+
+    .logo img {
+      height: 70px;
+      width: 70px;
+      cursor: pointer;
+    }
+
+    .cart-icon i {
+      font-size: 30px;
+      color: #111;
+      cursor: pointer;
+    }
+    .cart-icon sup {
+      position: absolute;
+      background-color: #ff2c8f;
+      color: #fff;
+      border-radius: 50%;
+      padding: 5px;
+      font-size: 13px;
+      right: 20px;
+      top: 20px;
+    }
+    .mainDataContainer {
+      width: 80%;
+    }
+    .categories {
+      width: 95%;
+      background-color: #fff;
+      box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+      padding: 10px;
+      display: flex;
+      justify-content: space-between;
+      /* gap: 1rem;  */
+      margin-top: 1rem;
+      position: sticky;
+      top: 96px;
+      z-index: 2;
+    }
+
+    .categories .mainCategories {
+      display: flex;
+      /* justify-content: space-evenly;
+      gap: 1rem; */
+    }
+
+    .categories button {
+      background-color: #f0c14b;
+      border: 1px solid;
+      padding: 5px 10px;
+      cursor: pointer;
+    }
+    .renderData {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+    .renderData .card {
+      width: 250px;
+      padding: 10px;
+      box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    }
+    .addToCartItems {
+      background-color: #f0c14b;
+      height: 100vh;
+      width: 22%;
+      position: fixed;
+      overflow: auto;
+      scrollbar-width: none;
+      top: 0;
+      right: 0;
+      z-index: 2;
+    }
+    .cartDisplay .productImage {
+      height: 50px;
+      width: 50px;
+      border-radius: 10px;
+    }
+    .cartDisplay {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #b48100;
+      width: 80%;
+      margin: 5px auto;
+      border-radius: 15px;
+      padding: 10px;
+    }
+    .totalPrice,
+    .price-total {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 0;
+      padding: 0 20px;
+    }
+    .totalPrice a {
+      background-color: #f0c14b;
+      color: #111;
+      text-decoration: none;
+      border: 1px solid;
+      padding: 5px 10px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    .totalPrice a:hover {
+      background-color: #b48100;
+    }
+    .cart-icon {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+    }
+    .cart-icon input {
+      width: 400px;
+      height: 35px;
+      padding: 5px 10px;
+      font-size: 17px;
+      border-radius: 10px;
+      background: transparent;
+      border: 1px solid #111;
+      outline: none;
+      margin: 10px 0;
+      transition: all 0.3s;
+    }
+    .cart-icon input::placeholder {
+      color: #111;
+    }
+    .card a {
+      text-decoration: none;
+      color: #111;
+    }
+    #detailedCart {
+      padding: 10px;
+      box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    }
+    .detailedProductImage {
+      height: 350px;
+      width: 350px;
+    }
+    select {
+      padding: 5px 10px;
+      font-size: 17px;
+      border-radius: 5px;
+      border: 1px solid #111;
+      background: transparent;
+      outline: none;
+      /* margin: 10px 0; */
+      transition: all 0.3s;
+    }
+
+    .logo .login-class {
+      margin-left: 10px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+    }
+    .logo .login-class a {
+      text-decoration: none;
+      color: #111;
+      border: 1px solid #111;
+      padding: 5px 10px;
+      transition: all 0.3s;
+    }
+    .logo .login-class a:hover,
+    .logo .logout .logoutBtn:hover {
+      background-color: darkgoldenrod;
+      color: #fff;
+      border: none;
+    }
+    .logo .logout {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      align-items: center;
+    }
+    .logo .logout .userName {
+      color: #111;
+      font-size: 22px;
+    }
+    .logo .logout .logoutBtn {
+      font-size: 17px;
+      padding: 6px;
+      background: none;
+      outline: none;
+      border: 1px solid #111;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+  </style>
+  <body>
+    <div class="navbar-container">
+      <div class="navbar">
+        <div class="logo" style="display: flex; align-items: center">
+          <div class="image">
+            <img src="pngwing.com.png" alt="" srcset="" />
+          </div>
+          <div class="login-class">
+            <a href="login.html">Login</a>
+            <a href="registration.html">Register</a>
+          </div>
+          <div class="logout">
+            <h5 class="userName" id="userName"></h5>
+            <button class="logoutBtn">Logout</button>
+          </div>
+        </div>
+        <div class="cart-icon">
+          <input
+            type="search"
+            placeholder="Search for products, brands and more"
+            class="searchInput"
+          />
+          <i class="fas fa-shopping-cart"></i>
+          <sup class="count-dynamically">0</sup>
+        </div>
+      </div>
+    </div>
+    <div class="mainDataContainer">
+      <div class="categories">
+        <div class="mainCategories"></div>
+        <div class="dropDown">
+          <select name="" id="dropDownSorting">
+            <option value="default" disabled selected>Sort Produts</option>
+            <option value="asc">Low to High</option>
+            <option value="desc">High to Low</option>
+          </select>
+        </div>
+      </div>
+      <div class="renderData"></div>
+    </div>
+    <div class="addToCartItems">
+      <h2 class="cartItems" style="text-align: center; margin-bottom: 0">
+        Your Cart Items
+      </h2>
+      <div class="totalPrice">
+        <h3>Total Price:</h3>
+        <a href="checkout.html" class=".checkoutBtn">CheckOut</a>
+      </div>
+      <div class="price-total"></div>
+      <hr />
+    </div>
+    <script src="pagination.js"></script>
+  </body>
+</html>

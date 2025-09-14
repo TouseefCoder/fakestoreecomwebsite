@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Register here</title>
+    <link
+      href="https://fonts.googleapis.com/css?family=Poppins:100,100italic,200,200italic,300,300italic,regular,italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        background-color: #f0c14b;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Poppins", sans-serif;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      main {
+        width: 100%;
+        max-width: 40%;
+        height: 85%;
+        padding: 10px;
+        text-align: center;
+        /* background-color: #b48100; */
+        border-radius: 10px;
+        overflow: none;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      h1 {
+        color: #111;
+        margin-top: 0;
+        margin-bottom: 0;
+      }
+      p {
+        color: #111;
+        margin-top: 0;
+        margin-bottom: 30px;
+      }
+      .input {
+        width: 95%;
+        padding: 10px;
+        font-size: 17px;
+        border-radius: 5px;
+        border: 1px solid #111;
+        background: transparent;
+        outline: none;
+        margin: 10px 0;
+        transition: all 0.3s;
+      }
+      .input::placeholder {
+        color: #111;
+      }
+      .input[type="submit"] {
+        width: 60%;
+        font-weight: 600;
+      }
+      .input[type="submit"]:hover {
+        background-color: #111;
+        color: #fff;
+        cursor: pointer;
+        width: 50%;
+      }
+      .link-file {
+        float: inline-end;
+        margin-bottom: 20px;
+      }
+      .link-file a {
+        text-decoration: none;
+        color: #111;
+        background: darkgoldenrod;
+        padding: 5px 10px;
+        margin-left: 5px;
+        transition: all 0.3s;
+      }
+      .link-file a:hover {
+        background: none;
+        color: rgb(48, 48, 190);
+        text-decoration: underline;
+        font-size: 16.5px;
+        margin-left: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <div class="mainContent">
+        <h1>Registration Form</h1>
+        <p>Please Register here IF you have no Account</p>
+
+        <form class="myForm" id="registration-form" action="" method="get">
+          <input
+            type="text"
+            placeholder="Enter Your Name"
+            class="input"
+            name=""
+            id="reg-name"
+          />
+          <input
+            type="email"
+            placeholder="Enter Your Email"
+            class="input"
+            name=""
+            id="reg-email"
+          />
+          <input
+            type="password"
+            placeholder="Enter Your Password"
+            class="input"
+            name=""
+            id="reg-password"
+          />
+          <div class="link-file">
+            <span>If you have an account: </span
+            ><a href="login.html">Login here</a>
+          </div>
+          <input type="submit" value="Submit" class="input submitBtn" />
+        </form>
+      </div>
+    </main>
+    <script src="pagination.js"></script>
+  </body>
+</html>
