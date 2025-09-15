@@ -76,7 +76,7 @@ window.addEventListener("DOMContentLoaded", async () => {
                 "loggedInUser",
                 JSON.stringify(registeredData[i].name)
               );
-              window.location.href = "pagination.html";
+              window.location.href = "index.html";
 
               return;
             }
@@ -372,3 +372,4 @@ window.addEventListener("DOMContentLoaded", async () => {
   fetchCategories("https://fakestoreapi.com/products/categories");
   fetchProducts("https://fakestoreapi.com/products");
 });
+
